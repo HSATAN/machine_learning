@@ -76,5 +76,25 @@ print(house_count)
 info = get_info(house_count)
 print(info)
 
-for info_A in info.values():
-    print(total_info - info_A)
+for key, value in info.items():
+    info[key] = total_info - value
+    print(total_info - value)
+print info
+
+def SplitInfo(data={}):
+    splitinfo = {}
+    for attribute, value in data.items():
+        splitinfo.setdefault(attribute, 0)
+        for key_temp, value_temp in value.items():
+            count = sum(value_temp.values())
+            splitinfo[attribute] += (-math.log(float(count)/DATA_LENTH, 2)*count/DATA_LENTH)
+
+    return splitinfo
+
+splitinfo = SplitInfo(house_count)
+
+for key ,value in splitinfo.items():
+    print info[key],value
+    print '%s  = ' % key, info[key] / value
+    print '%s  = '%key, round(info[key]/value,3)
+
