@@ -23,3 +23,18 @@ test_data_2 = [{'log': 's', 'friend' : 's', 'head': 'no', 'category': 'no'},
                {'log': 'm', 'friend': 's', 'head': 'no', 'category': 'yes'},
                {'log': 's', 'friend': 's', 'head': 'yes', 'category': 'no'}]
 
+test_data_3 = [{'age': 'y', 'income': 'h', 'student': 'n', 'credit_rating': 'f', 'category': 'no'},
+               {'age': 'y', 'income': 'h', 'student': 'n', 'credit_rating': 'e', 'category': 'no'},
+               {'age': 'm', 'income': 'h', 'student': 'n', 'credit_rating': 'f', 'category': 'yes'},
+               {'age': 's', 'income': 'm', 'student': 'n', 'credit_rating': 'f', 'category': 'yes'},
+               {'age': 's', 'income': 'l', 'student': 'y', 'credit_rating': 'f', 'category': 'yes'},
+               {'age': 's', 'income': 'l', 'student': 'y', 'credit_rating': 'e', 'category': 'no'},
+               {'age': 'm', 'income': 'l', 'student': 'y', 'credit_rating': 'e', 'category': 'yes'},
+               {'age': 'y', 'income': 'm', 'student': 'n', 'credit_rating': 'f', 'category': 'no'},
+               {'age': 'y', 'income': 'l', 'student': 'y', 'credit_rating': 'f', 'category': 'yes'},
+               {'age': 's', 'income': 'm', 'student': 'y', 'credit_rating': 'f', 'category': 'yes'},
+               {'age': 'y', 'income': 'm', 'student': 'y', 'credit_rating': 'e', 'category': 'yes'},
+               {'age': 'm', 'income': 'm', 'student': 'n', 'credit_rating': 'e', 'category': 'yes'},
+               {'age': 'm', 'income': 'h', 'student': 'y', 'credit_rating': 'f', 'category': 'yes'},
+               {'age': 's', 'income': 'm', 'student': 'n', 'credit_rating': 'e', 'category': 'no'}]
+

@@ -2,7 +2,9 @@
 import math
 import copy
 from  data_util.data import *
-test_data = test_data_2
+test_data = test_data_3
+
+DATA_LENTH = len(test_data)
 def get_property(data={}):
     property_category = {}
     for property in data.keys():
@@ -31,15 +33,15 @@ def get_entropy(property=None):
     p = copy.deepcopy(property)
     if not p or not isinstance(p, dict):
         return
-    count = 0
+    count = .0
     for value in p.values():
         count += value
     if count == 0:
         return
     for key, value in p.items():
-        temp = value / count
+        temp = float(value / count)
         p[key] = -(temp * math.log(temp, 2))
-    return sum(p.values())*(count/10.0)
+    return sum(p.values())*(count/DATA_LENTH)
 
 def get_info(data={}, property=None):
     if property:
@@ -59,6 +61,7 @@ def get_info(data={}, property=None):
         info[key] = info_property
     return info
 total_probability = get_category()
+print(total_probability)
 total_info = get_entropy(total_probability)
 print(total_info)
 house_count = get_category(property=True)
@@ -69,3 +72,5 @@ print(info)
 
 for info_A in info.values():
     print(total_info - info_A)
+
+print(-(5.0/14*math.log(5.0/14, 2)) - (9.0/14*math.log(9.0/14, 2)))
