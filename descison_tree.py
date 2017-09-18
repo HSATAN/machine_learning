@@ -5,16 +5,22 @@ from  data_util.data import *
 test_data = test_data_3
 
 DATA_LENTH = len(test_data)
+if test_data:
+    ATTRIBUTE_LIST = test_data[0].keys()
+    ATTRIBUTE_LIST.remove('category')
+
+print(ATTRIBUTE_LIST)
+
 def get_property(data={}):
     property_category = {}
     for property in data.keys():
         property_category.setdefault()
 
-def get_category(property=None):
+def get_category(attribute_list=None, property=None):
     if property:
         total_property = {}
         for item in test_data:
-            for property in test_data[0].keys():
+            for property in attribute_list:
                 total_property.setdefault(property, {})
                 total_property[property].setdefault(item[property], {})
 
@@ -60,11 +66,11 @@ def get_info(data={}, property=None):
             info_property += resullt
         info[key] = info_property
     return info
-total_probability = get_category()
+total_probability = get_category(ATTRIBUTE_LIST)
 print(total_probability)
 total_info = get_entropy(total_probability)
 print(total_info)
-house_count = get_category(property=True)
+house_count = get_category(ATTRIBUTE_LIST, property=True)
 print(house_count)
 
 info = get_info(house_count)
@@ -72,5 +78,3 @@ print(info)
 
 for info_A in info.values():
     print(total_info - info_A)
-
-print(-(5.0/14*math.log(5.0/14, 2)) - (9.0/14*math.log(9.0/14, 2)))
