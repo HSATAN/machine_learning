@@ -8,12 +8,13 @@ class Bayes(object):
 
     def __init__(self):
         pass
-
-    def get_category(self):
+    @classmethod
+    def get_category(cls):
 
         return statistics_category(test_data)
 
-    def get_p(self, count=0, category={}):
+    @classmethod
+    def get_p(cls, count=0, category={}):
         p = {}
         if count == 0:
             return
@@ -22,25 +23,21 @@ class Bayes(object):
             p[key] = value/float(count)
         return p
 
-    def statistics_condition_p(attribute_list=None, property=None, data={}):
-        if property:
-            total_property = {}
-            for item in data:
-                for property in attribute_list:
-                    total_property.setdefault(property, {})
-                    total_property[property].setdefault(item[property], {})
+    @classmethod
+    def statistics_condition_p(cls, attribute_list=None, data={}, category=None):
 
-                    total_property[property][item[property]].setdefault(item['category'], 0)
-                    total_property[property][item[property]][item['category']] += 1
-            return total_property
-        p = {}
-        count = 0
+        total_property = {}
+        if not category:
+            category = 'category'
         for item in data:
-            count += 1
-            p.setdefault(item['category'], 0)
-            p[item['category']] += 1
+            for property in item.keys():
+                total_property.setdefault(category, {})
+                total_property[category].setdefault(property, {})
+                total_property[property].setdefault(item[property], {})
 
-        return p
+                total_property[property][item[property]].setdefault(item['category'], 0)
+                total_property[property][item[property]][item['category']] += 1
+        return total_property
 
 bayes = Bayes()
 p, count = bayes.get_category()
@@ -48,3 +45,4 @@ print(p)
 print(count)
 p_total = bayes.get_p(count, p)
 print(p_total)
+print(bayes.statistics_condition_p(test_data))
