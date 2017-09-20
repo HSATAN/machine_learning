@@ -17,4 +17,6 @@ def statistics_category(data={}, category='category'):
         count += 1
         p.setdefault(item[category], 0)
         p[item[category]] += 1
-    return p
+    return p, count
+
+

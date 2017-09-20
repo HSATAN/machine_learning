@@ -76,10 +76,6 @@ print(house_count)
 info = get_info(house_count)
 print(info)
 
-for key, value in info.items():
-    info[key] = total_info - value
-    print(total_info - value)
-print info
 
 
 def SplitInfo(data={}):
