@@ -2,7 +2,7 @@
 
 from util.common import statistics_category
 from data_util.data import test_data_3 as test_data
-
+import copy
 
 class Bayes(object):
 
@@ -31,18 +31,28 @@ class Bayes(object):
             category = 'category'
         for item in data:
             for property in item.keys():
-                total_property.setdefault(category, {})
-                total_property[category].setdefault(property, {})
-                total_property[property].setdefault(item[property], {})
+                total_property.setdefault(item[category], {})
+                total_property[item[category]].setdefault(property, {})
+                total_property[item[category]][property].setdefault(item[property], 0)
 
-                total_property[property][item[property]].setdefault(item['category'], 0)
-                total_property[property][item[property]][item['category']] += 1
+                total_property[item[category]][property][item[property]] += 1
         return total_property
-
+    @classmethod
+    def calculate(cls, count_p={}):
+        result = {}
+        p = copy.deepcopy(count_p)
+        for category_key, category_value in p.items():
+            category_count = sum(category_value['category'].values())
+            for category, value in category_value.items():
+                for key, count in value.items():
+                    if key == 'category':
+                        return
+                    print('P(%s = %s|category=%s) = %s' %(category,key,category_key,count/category_count))
 bayes = Bayes()
 p, count = bayes.get_category()
 print(p)
 print(count)
 p_total = bayes.get_p(count, p)
 print(p_total)
-print(bayes.statistics_condition_p(test_data))
+data = bayes.statistics_condition_p(data=test_data)
+bayes.calculate(data)
