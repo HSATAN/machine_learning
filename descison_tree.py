@@ -81,6 +81,7 @@ for key, value in info.items():
     print(total_info - value)
 print info
 
+
 def SplitInfo(data={}):
     splitinfo = {}
     for attribute, value in data.items():
@@ -93,8 +94,4 @@ def SplitInfo(data={}):
 
 splitinfo = SplitInfo(house_count)
 
-for key ,value in splitinfo.items():
-    print info[key],value
-    print '%s  = ' % key, info[key] / value
-    print '%s  = '%key, round(info[key]/value,3)
 
