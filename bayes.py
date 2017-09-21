@@ -82,9 +82,14 @@ p_total = bayes.get_p(count, pro)
 print(p_total)
 data = bayes.statistics_condition_p(data=test_data)
 result = bayes.calculate(data)
+print result
 X = {'age': 'y', 'income': 'm', 'student': 'y', 'credit_rating': 'f'}
 final_p = bayes.classify(result, X)
-
+print final_p
 final = {}
 for key, value in final_p.items():
     final[key] = value*p_total[key]
+
+
+print(final)
+
