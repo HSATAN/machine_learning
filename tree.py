@@ -17,12 +17,29 @@ class BinaryTree:
             self.leftChild = t
 
     def insertRight(self, newNode):
+
         if self.rightChild == None:
             self.rightChild = BinaryTree(newNode)
         else:
             t = BinaryTree(newNode)
             t.rightChild = self.rightChild
             self.rightChild = t
+
+    def get_insert(self, data):
+
+        if self.leftChild is None and self.rightChild is None:
+            return self
+        if self.leftChild is None:
+            if data <= self.key:
+                return self
+            else:
+
+                self.get_insert(self.rightChild, data)
+        else:
+            if data >= self.key:
+                return self
+            else:
+                return self.get_insert(self.leftChild, data)
 
     def getRightChild(self):
         return self.rightChild
@@ -36,15 +53,21 @@ class BinaryTree:
     def getRootVal(self):
         return self.key
 
+    def insert(self, data):
+        if self.leftChild is None and self.rightChild is None:
+            if data <= self.key:
+                node = BinaryTree(data)
+                self.rightChild = node
+                node.key = data
+
 
 r = BinaryTree('a')
-print(r.getRootVal())
-print(r.getLeftChild())
-r.insertLeft('b')
-print(r.getLeftChild())
-print(r.getLeftChild().getRootVal())
-r.insertRight('c')
-print(r.getRightChild())
-print(r.getRightChild().getRootVal())
-r.getRightChild().setRootVal('hello')
-print(r.getRightChild().getRootVal())
+print r
+print dir(r)
+print r.key
+data = 'b'
+node = r.get_insert(data)
+
+print node is r
+print node
+
